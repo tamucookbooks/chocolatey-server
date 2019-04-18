@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the chocolatey-server cookbook.
 
+# 0.1.1
+
+Chocolatey is having issues with released versions. Reverting back to beta versions
+
 # 0.1.0
 
 Initial release.

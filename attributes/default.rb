@@ -1,0 +1,5 @@
+default['chocolatey-server']['license'] = 'chocolatey.license.xml'
+default['chocolatey-server']['sqlsource'] = 'https://go.microsoft.com/fwlink/?linkid=853016'
+default['chocolatey-server']['database-options'] = '-y'
+default['chocolatey-server']['service-options'] = '-y'
+default['chocolatey-server']['web-options'] = '-y'
