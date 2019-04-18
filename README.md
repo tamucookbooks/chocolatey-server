@@ -2,6 +2,7 @@
 Chocolatey server and ccm cookbook
 ===================================
 This is a cookbook that will install chocolatey simple-server and chocolatey central management console
+https://chocolatey.org/docs/installation-licensed#how-do-i-install-the-licensed-edition
 
 Requirments
 -----------------------------------
