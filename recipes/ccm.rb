@@ -86,19 +86,19 @@ chocolatey_package 'dotnetcore-windowshosting' do
 end
 
 chocolatey_package 'chocolatey-management-database' do
-    version '0.1.0-beta-20181009'
+    version node['chocolatey-server']['database-version']
     options node['chocolatey-server']['database-options']
     action :install
 end
 
 chocolatey_package 'chocolatey-management-service' do
-    version '0.1.0-beta-20181009'
+    version node['chocolatey-server']['service-version']
     options node['chocolatey-server']['service-options']
     action :install
 end
 
 chocolatey_package 'chocolatey-management-web' do
-    version '0.1.0-beta-20181009'
+    version node['chocolatey-server']['web-version']
     options node['chocolatey-server']['web-options']
     action :install
 end
