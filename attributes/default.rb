@@ -3,3 +3,6 @@ default['chocolatey-server']['sqlsource'] = 'https://go.microsoft.com/fwlink/?li
 default['chocolatey-server']['database-options'] = '-y'
 default['chocolatey-server']['service-options'] = '-y'
 default['chocolatey-server']['web-options'] = '-y'
+default['chocolatey-server']['database-version'] = '0.1.0-beta-20181009'
+default['chocolatey-server']['service-version'] = '0.1.0-beta-20181009'
+default['chocolatey-server']['web-version'] = '0.1.0-beta-20181009'
