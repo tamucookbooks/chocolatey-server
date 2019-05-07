@@ -18,6 +18,8 @@
 
 # https://chocolatey.org/docs/features-chocolatey-central-management
 
+return unless platform?('windows')
+
 include_recipe 'chocolatey::default'
 
 directory 'C:\\ProgramData\\chocolatey\\license' do
