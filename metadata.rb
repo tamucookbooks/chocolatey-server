@@ -10,3 +10,6 @@ chef_version '>= 13.0'
 depends 'chocolatey'
 depends 'windows'
 depends 'iis'
+
+issues_url 'https://github.com/tamucookbooks/chocolatey-server/issues'
+source_url 'https://github.com/tamucookbooks/chocolatey-server'

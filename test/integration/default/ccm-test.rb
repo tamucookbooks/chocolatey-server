@@ -4,7 +4,7 @@
 # found at http://inspec.io/docs/reference/resources/
 
 describe user('ChocolateyLocalAdmin'), do
-    it { should exist }
+  it { should exist }
 end
 
 describe service('chocolatey-agent') do
@@ -14,9 +14,9 @@ describe service('chocolatey-agent') do
 end
 
 describe service('chocolatey-central-management') do
-    it { should be_installed }
-    it { should be_running }
-    its ('startmode') { should eq 'Auto' }
+  it { should be_installed }
+  it { should be_running }
+  its ('startmode') { should eq 'Auto' }
 end
 
 describe service('W3SVC') do

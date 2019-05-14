@@ -16,99 +16,98 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-return unless platform?('windows')  
+return unless platform?('windows')
 
 include_recipe 'chocolatey::default'
 
 directory 'C:\\ProgramData\\chocolatey\\license' do
-    action :create
-    not_if {::File.directory?("C:\\ProgramData\\chocolatey\\license")}
+  action :create
+  not_if { ::File.directory?('C:\\ProgramData\\chocolatey\\license') }
 end
 
 cookbook_file 'C:\\ProgramData\\chocolatey\\license\\chocolatey.license.xml' do
-    source node['chocolatey-server']['license']
-    action :create
+  source node['chocolatey-server']['license']
+  action :create
 end
 
 directory 'C:\\choco-setup' do
-    action :create
-    not_if {::File.directory?("C:\\choco-setup")}
+  action :create
+  not_if { ::File.directory?('C:\\choco-setup') }
 end
 
 directory 'C:\\choco-setup\\files' do
-    action :create
-    not_if {::File.directory?("C:\\choco-setup\\files")}
+  action :create
+  not_if { ::File.directory?('C:\\choco-setup\\files') }
 end
 
 directory 'C:\\choco-setup\\packages' do
-    action :create
-    not_if {::File.directory?("C:\\choco-setup\\packages")}
+  action :create
+  not_if { ::File.directory?('C:\\choco-setup\\packages') }
 end
 
 chocolatey_config 'virusScannerType' do
-    value 'VirusTotal'
-    action :set
+  value 'VirusTotal'
+  action :set
 end
 
 chocolatey_package 'chocolatey-agent' do
-    options '-y'
-    source 'https://licensedpackages.chocolatey.org/api/v2/'
-    action :install
+  options '-y'
+  source 'https://licensedpackages.chocolatey.org/api/v2/'
+  action :install
 end
 
 chocolatey_package 'chocolatey.server' do
-    action :install
+  action :install
 end
 
 chocolatey_package 'chocolatey.extension' do
-    action :install
+  action :install
 end
 
 chocolatey_package 'ChocolateyGUI' do
-    action :install
+  action :install
 end
 
 chocolatey_config 'cachelocation' do
-    value "c:\\programdata\\choco-cache"
-    action :set
+  value "c:\\programdata\\choco-cache"
+  action :set
 end
 
 powershell_script 'refresh' do
-    code <<-EOH
-    c:\\ProgramData\\chocolatey\\bin\\RefreshEnv.cmd
-    EOH
+  code <<-EOH
+  c:\\ProgramData\\chocolatey\\bin\\RefreshEnv.cmd
+  EOH
 end
 
-
 powershell_script 'choco' do
-    cwd 'c:\\ProgramData\\chocolatey'
-    code <<-EOH
-    choco feature enable --name="'internalizeAppendUseOriginalLocation'"
-    choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
-    choco feature enable -n virusCheck
-    choco feature enable -n allowPreviewFeatures
-    choco feature enable -n internalizeAppendUseOriginalLocation
-    choco feature enable -n reduceInstalledPackageSpaceUsage
-    EOH
+  cwd 'c:\\ProgramData\\chocolatey'
+  code <<-EOH
+  choco feature enable --name="'internalizeAppendUseOriginalLocation'"
+  choco feature enable --name="'reduceInstalledPackageSpaceUsage'"
+  choco feature enable -n virusCheck
+  choco feature enable -n allowPreviewFeatures
+  choco feature enable -n internalizeAppendUseOriginalLocation
+  choco feature enable -n reduceInstalledPackageSpaceUsage
+  EOH
 end
 
 chocolatey_package 'KB2919355' do
-    action :install
+  action :install
 end
 
 chocolatey_package 'KB2919442' do
-    action :install
+  action :install
 end
 
 windows_feature ['web-server', 'Web-Asp-Net45', 'Web-AppInit' ] do
-    action :install
-    management_tools true
-    install_method :windows_feature_powershell
-    not_if "(Get-WindowsFeature -Name Web-Server).Installed"
+  action :install
+  management_tools true
+  install_method :windows_feature_powershell
+  not_if { '(Get-WindowsFeature -Name Web-Server).Installed' }
 end
 
 powershell_script 'iis' do
-    code <<-EOH
+  code <<-EOH
     $siteName = 'chocolatey'
     $appPoolName = 'chocoAppPool'
     $sitePath = 'c:\\tools\\chocolatey.server'
