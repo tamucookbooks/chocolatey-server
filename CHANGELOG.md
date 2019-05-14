@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the chocolatey-server cookbook.
 
+#0.1.4
+
+cookstyle and foodcritic formatting/syntax edits
+
 #0.1.3
 
 Adding tests for both recipes
