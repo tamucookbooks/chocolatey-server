@@ -2,18 +2,18 @@
 
 This file is used to list changes made in each version of the chocolatey-server cookbook.
 
-#0.1.5
+# 0.1.5
 Updated attributes to reflect new version of CCM
 
-#0.1.4
+# 0.1.4
 
 cookstyle and foodcritic formatting/syntax edits
 
-#0.1.3
+# 0.1.3
 
 Adding tests for both recipes
 
-#0.1.2
+# 0.1.2
 
 Adding CCM attributes for database,service, and web packages
 
